@@ -3,6 +3,7 @@
   <li>Color Flipper</li>
   <li>Counter JS</li>
   <li>Reviews</li>
+  <li>Navbar</li>
 </ul>
  
 
