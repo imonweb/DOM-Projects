@@ -1,3 +1,3 @@
-DOM Projects
-Color Flipper
-Counter JS
+DOM Projects <br>
+Color Flipper <br>
+Counter JS <br>
