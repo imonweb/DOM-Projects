@@ -4,6 +4,7 @@
   <li>Counter JS</li>
   <li>Reviews</li>
   <li>Navbar</li>
+  <li>Sidebar</li>
 </ul>
  
 
