@@ -71,36 +71,26 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "steak dinner",
+    category: "dinner",
+    price: 39.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  
 ];
 
 const sectionCenter = document.querySelector('.section-center');
-const filterBtns = document.querySelectorAll('.filter-btn');
+const container = document.querySelector('.btn-container');
+// console.log(filterBtns)
 
 // load items
 window.addEventListener("DOMContentLoaded", function() {
   displayMenuItems(menu)
-})
-
-// filter items
-filterBtns.forEach(function(btn) {
-  btn.addEventListener('click', function(e){
-    // console.log(e.currentTarget.dataset.id)
-    const category = e.currentTarget.dataset.id;
-    const menuCategory = menu.filter(function(menuItem) {
-      // console.log(menuItem.category)
-    if(menuItem.category === category){
-      return menuItem;
-    }
-
-      // return menuItem
-    })
-    // console.log(menuCategory)
-    if(category === 'all'){
-      displayMenuItems(menu)
-    } else {
-      displayMenuItems(menuCategory)
-    }
-  })
+  
+  displayMenuButtons()
 })
 
 
@@ -124,4 +114,44 @@ function displayMenuItems(menuItems){
   displayMenu = displayMenu.join('')
   sectionCenter.innerHTML = displayMenu
   // console.log(displayMenu);
+}
+
+function displayMenuButtons(){
+  const categories = menu.reduce(function(values, item){
+    if(!values.includes(item.category)){
+      values.push(item.category);
+    }
+    return values
+  }, ['all'])
+  console.log(categories);
+  const categoryBtns = categories.map(function(category){
+    return `<button type="button" class="filter-btn" data-id=${category}>
+    ${category}
+    </button>`
+  }).join('')
+  container.innerHTML = categoryBtns;
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  console.log(categoryBtns)
+
+  // filter items
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e){
+      // console.log(e.currentTarget.dataset.id)
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter(function(menuItem) {
+        // console.log(menuItem.category)
+      if(menuItem.category === category){
+        return menuItem;
+      }
+
+        // return menuItem
+      })
+      // console.log(menuCategory)
+      if(category === 'all'){
+        displayMenuItems(menu)
+      } else {
+        displayMenuItems(menuCategory)
+      }
+    })
+  })
 }
