@@ -194,6 +194,9 @@ Video
   z-index: 999;
   transition: var(--transition);
 }
+ 
+/* ====== Pre loader ====== */
+ 
 .hide-preloader {
   z-index: -999;
   visibility: hidden;
@@ -216,7 +219,6 @@ header {
 }
 h1 {
   color: var(--clr-white);
- 
 }
 /* switch button */
 
@@ -256,7 +258,7 @@ h1 {
   left: 50%;
 }
 /* header after */
-  header::after {
+header::after {
   content: "";
   position: absolute;
   top: 0;
@@ -265,4 +267,4 @@ h1 {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: -1;
-}  
+}
