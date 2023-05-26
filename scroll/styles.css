@@ -275,9 +275,13 @@ nav {
   .nav-toggle {
     display: none;
   }
+
+  /*  Links */
   .links-container {
     height: auto !important;
   }
+
+
   .links {
     display: flex;
   }
