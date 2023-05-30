@@ -24,11 +24,12 @@ navToggle.addEventListener('click', function(){
     linksContainer.style.height = 0;
   }
 })
+
+// ********** fixed navbar ************
 const navbar = document.getElementById('nav')
 const topLink = document.querySelector('.top-link')
 
-// ********** fixed navbar ************
-window.addEventListener('scroll', function(){
+window.addEventListener("scroll", function(){
   // console.log(window.pageYOffset);
   const scrollHeight = window.pageYOffset;
   const navHeight = navbar.getBoundingClientRect().height 
@@ -39,7 +40,7 @@ window.addEventListener('scroll', function(){
   }
 
   if(scrollHeight > 500){
-    topLink.classList('show-link')
+    topLink.classList.add('show-link')
   } else {
     topLink.classList.remove("show-link")
   }
@@ -52,7 +53,29 @@ scrollLinks.forEach(function(link){
   link.addEventListener("click", (e) => {
     e.preventDefault();
     // navigate to specific spot
-    const id = e.currentTarget.getAttribute('href')
+    const id = e.currentTarget.getAttribute('href').slice(1)
     // console.log(id);
+    const element = document.getElementById(id);
+    /*  calculate the heights */
+    const navHeight = navbar.getBoundingClientRect().height;
+    const containerHeight = linksContainer.getBoundingClientRect().height
+    const fixedNav = navbar.classList.contains('fixed-nav')
+    let position = element.offsetTop - navHeight;
+    console.log(position);
+
+    if(!fixedNav){
+      position = position - navHeight;
+    }
+
+    if(navHeight > 82){
+      position = position + containerHeight;
+    }
+
+     
+    window.scrollTo({
+      left:0,
+      top:position,
+    })
+    linksContainer.style.height = 0;
   })
 })
